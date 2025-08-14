@@ -1,0 +1,23 @@
+"use client";
+import { Menu } from "lucide-react";
+import { Inter } from "next/font/google";
+export default function Header({
+  onToggle,
+}: {
+  onToggle: () => void;
+}) {
+  return (
+    <header className="bg-white text-black p-4 flex items-center justify-between transition-all duration-300">
+              <button
+        className="p-2 bg-gray-200 rounded hover:bg-gray-300"
+        onClick={onToggle}
+      >
+        <Menu size={24} />
+      </button>
+            <h1 className="text-2xl font-bold font-sans">Search Bar</h1>
+
+      <h1 className="text-2xl font-bold font-sans">Shortcut</h1>
+
+    </header>
+  );
+}
