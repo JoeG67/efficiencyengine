@@ -6,7 +6,7 @@ EfficiencyEngine is a productivity-focused internal dashboard built with React, 
 
 1. Collapsible sidebar with navigation links
 
-2. Reusable Header component with sidebar toggle
+2. Reusable and responsive components
 
 3. Dashboard previews for tasks and assets
 
