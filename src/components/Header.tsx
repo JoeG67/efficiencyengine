@@ -14,9 +14,9 @@ export default function Header({
       >
         <Menu size={24} />
       </button>
-            <h1 className="text-2xl font-bold font-sans">Search Bar</h1>
+            <h1 className="2xl:text-xl xl:text-lg lg:text-base sm:text-sm font-bold font-sans">Search Bar</h1>
 
-      <h1 className="text-2xl font-bold font-sans">Shortcut</h1>
+      <h1 className="2xl:text-xl xl:text-lg lg:text-base sm:text-sm font-bold font-sans">Shortcut</h1>
 
     </header>
   );
