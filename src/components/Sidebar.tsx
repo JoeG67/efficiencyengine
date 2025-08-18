@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Sidebar({ isOpen }: { isOpen: boolean }) {
   return (
     <aside
-      className={`bg-[#313a46] border-r transition-all duration-300 ease-in-out flex flex-col ${
+      className={`bg-[#313a46] border-r h-screen transition-all duration-300 ease-in-out flex flex-col ${
         isOpen ? "w-64" : "w-16"
       }`}
     >
