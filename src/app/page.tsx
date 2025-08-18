@@ -25,7 +25,7 @@ export default function HomePage() {
         <h2 className="2xl:text-lg xl:text-base lg:text-sm sm:text-xs font-bold font-sans">
           Assets
         </h2>
-        {tasks.length > 0 ? (
+        {assets.length > 0 ? (
           <>
             <ul className="list-decimal pl-4">
               {assets.slice(0, 3).map((a) => (
