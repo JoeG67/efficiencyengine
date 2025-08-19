@@ -82,3 +82,6 @@ None for now
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
+
+## Acknowledgements
+All creators of relevant technologies and libraries used in the project.
