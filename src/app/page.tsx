@@ -1,42 +1,53 @@
 "use client";
 import { useStore } from "@/store/useStore";
+import { ListTodo, MoveRight, Boxes } from "lucide-react";
 
 export default function HomePage() {
   const tasks = useStore((state) => state.tasks);
   const assets = useStore((state) => state.assets);
 
   return (
-    <main className="flex-1 p-4 grid grid-cols-1 md:grid-cols-2 sm:grid-cols-3 gap-4">
-      <section className="bg-white p-4 rounded shadow-xl">
-        <h2 className="2xl:text-lg xl:text-base lg:text-sm sm:text-xs font-bold font-sans">
-          Tasks
-        </h2>
-        {tasks.length > 0 ? (
-          <ul className="list-decimal pl-4">
-            {tasks.slice(0, 3).map((t) => (
-              <li key={t.id}>{t.title}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-500">No tasks yet</p>
-        )}
+    <main className="flex-1 p-4 grid grid-cols-2 md:grid-cols-3 sm:grid-cols-4 gap-4">
+      <section className="bg-[#00A15D] p-4 rounded-lg shadow-xl flex items-center justify-between">
+        <div className="flex-shrink-0">
+          <ListTodo className="2xl:w-20 2xl:h-20 xl:w-16 xl:h-16 lg:w-12 lg:h-12 sm:w-10 sm:h-10 sm:block hidden" color="#FFFFFF" />
+        </div>
+
+        <div className="text-left">
+          <h2 className="2xl:text-2xl xl:text-xl lg:text-lg sm:text-sm text-[8px] font-bold font-sans text-white">
+            {tasks.length} tasks
+          </h2>
+        </div>
+
+        <div className="flex-shrink-0">
+          <a
+            href="/tasks"
+            className="text-white underline hover:text-gray-200 transition 2xl:text-2xl xl:text-xl lg:text-lg sm:text-sm text-xs"
+          >
+            <MoveRight className="2xl:w-10 2xl:h-10 xl:w-8 xl:h-8 w-4 h-4" color="#FFFFFF" />
+          </a>
+        </div>
       </section>
-      <section className="bg-white p-4 rounded shadow-xl">
-        <h2 className="2xl:text-lg xl:text-base lg:text-sm sm:text-xs font-bold font-sans">
-          Assets
-        </h2>
-        {assets.length > 0 ? (
-          <>
-            <ul className="list-decimal pl-4">
-              {assets.slice(0, 3).map((a) => (
-                <li key={a.id}>{a.title}</li>
-              ))}
-            </ul>
-            <a href="/assets"> See More</a>
-          </>
-        ) : (
-          <p className="text-gray-500">No assets yet</p>
-        )}
+
+      <section className="bg-[#FF5E4B] p-4 rounded-lg shadow-xl flex items-center justify-between">
+        <div className="flex-shrink-0">
+          <Boxes className="2xl:w-20 2xl:h-20 xl:w-16 xl:h-16 lg:w-12 lg:h-12 sm:w-10 sm:h-10 sm:block hidden" color="#FFFFFF" />
+        </div>
+
+        <div className="text-left">
+          <h2 className="2xl:text-2xl xl:text-xl lg:text-lg sm:text-sm text-[8px] font-bold font-sans text-white">
+            {assets.length} assets
+          </h2>
+        </div>
+
+        <div className="flex-shrink-0">
+          <a
+            href="/assets"
+            className="text-white underline hover:text-gray-200 transition 2xl:text-2xl xl:text-xl lg:text-lg sm:text-sm text-xs"
+          >
+            <MoveRight className="2xl:w-10 2xl:h-10 xl:w-8 xl:h-8 w-4 h-4" color="#FFFFFF" />
+          </a>
+        </div>
       </section>
     </main>
   );
