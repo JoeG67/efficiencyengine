@@ -1,12 +1,12 @@
-"use client";
+"use client";     
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 // 1. Item types
 
-export type TaskStatus = "todo" | "in-progress" | "done";
-export type AssetStatus = "Available" | "In Use" | "review" | "done";
+export type TaskStatus = "To Do" | "In-Progress" | "Done";
+export type AssetStatus = "Available" | "In Use" | "Review";
 export type Task = {
   id: string;
   title: string;
@@ -20,8 +20,9 @@ export type Asset = {
   id: string;
   title: string;
   category: string;
+  description: string;
+  quantity: number;
   status: AssetStatus;
-  notes?: string;
   createdAt: string;
 };
 
