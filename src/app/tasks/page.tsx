@@ -77,9 +77,9 @@ return (
                     <span
                       className={`px-2 py-1 rounded text-xs font-medium
                         ${
-                          t.status === "done"
+                          t.status === "Done"
                             ? "bg-green-100 text-green-700"
-                            : t.status === "in-progress"
+                            : t.status === "In-Progress"
                             ? "bg-yellow-100 text-yellow-700"
                             : "bg-gray-200 text-gray-700"
                         }`}

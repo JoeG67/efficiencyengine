@@ -13,9 +13,9 @@ type TaskFormProps = {
 export default function TaskForm({ onSave, onCancel }: TaskFormProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState<TaskStatus>("todo");
+  const [status, setStatus] = useState<TaskStatus>("To Do");
 
-  const TASK_STATUSES: TaskStatus[] = ["todo", "in-progress", "done"];
+  const TASK_STATUSES: TaskStatus[] = ["To Do", "In-Progress", "Done"];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,9 +58,9 @@ export default function TaskForm({ onSave, onCancel }: TaskFormProps) {
       >
         {TASK_STATUSES.map((s) => (
           <option key={s} value={s}>
-            {s === "todo"
+            {s === "To Do"
               ? "Todo"
-              : s === "in-progress"
+              : s === "In-Progress"
               ? "In Progress"
               : "Done"}
           </option>
