@@ -15,6 +15,8 @@ export default function AssetForm({ onSave, onCancel }: AssetFormProps) {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
+
   const [status, setStatus] = useState<AssetStatus>("Available");
 
   const ASSET_STATUSES: AssetStatus[] = ["Available", "In Use", "Review"];
@@ -28,6 +30,7 @@ export default function AssetForm({ onSave, onCancel }: AssetFormProps) {
       category,
       description,
       quantity,
+      price,
       status,
       createdAt: new Date().toISOString(),
     };
@@ -36,16 +39,13 @@ export default function AssetForm({ onSave, onCancel }: AssetFormProps) {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="mb-4 p-4 bg-gray-200 rounded space-y-2"
-    >
+    <form onSubmit={handleSubmit} className="mb-4 p-4 bg-white space-y-2">
       <input
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-2 rounded border"
+        className="w-full p-2 rounded border border-gray-200"
         required
       />
       <input
@@ -53,14 +53,14 @@ export default function AssetForm({ onSave, onCancel }: AssetFormProps) {
         placeholder="Category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="w-full p-2 rounded border"
+        className="w-full p-2 rounded border border-gray-200"
         required
       />
       <textarea
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="w-full p-2 rounded border"
+        className="w-full p-2 rounded border border-gray-200"
       />
       <input
         type="number"
@@ -69,13 +69,23 @@ export default function AssetForm({ onSave, onCancel }: AssetFormProps) {
         onChange={(e) =>
           setQuantity(e.target.value === "" ? 0 : Number(e.target.value))
         }
-        className="w-full p-2 rounded border"
+        className="w-full p-2 rounded border border-gray-200"
+        required
+      />
+      <input
+        type="number"
+        placeholder="Price"
+        value={price}
+        onChange={(e) =>
+          setPrice(e.target.value === "" ? 0 : Number(e.target.value))
+        }
+        className="w-full p-2 rounded border border-gray-200"
         required
       />
       <select
         value={status}
         onChange={(e) => setStatus(e.target.value as AssetStatus)}
-        className="w-full p-2 rounded border"
+        className="w-full p-2 rounded border border-gray-200"
       >
         {ASSET_STATUSES.map((s) => (
           <option key={s} value={s}>
@@ -91,14 +101,14 @@ export default function AssetForm({ onSave, onCancel }: AssetFormProps) {
       <div className="flex gap-2">
         <button
           type="submit"
-          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-800"
         >
           Save
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+          className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-800"
         >
           Cancel
         </button>
