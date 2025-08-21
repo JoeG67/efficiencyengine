@@ -9,10 +9,10 @@ export default function Header({
   return (
     <header className="bg-white text-black p-4 flex items-center justify-between transition-all duration-300">
               <button
-        className="p-2 bg-gray-200 rounded hover:bg-gray-300"
+        className="p-2"
         onClick={onToggle}
       >
-        <Menu size={24} />
+        <Menu className="text-black hover:text-[#B8B6B6]" size={24} />
       </button>
             <h1 className="2xl:text-xl xl:text-lg lg:text-base sm:text-sm font-bold font-sans">Search Bar</h1>
 
