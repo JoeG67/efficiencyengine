@@ -29,7 +29,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#FF5E4B] p-4 rounded-lg shadow-xl flex items-center justify-between">
+      <section className="bg-red-600 p-4 rounded-lg shadow-xl flex items-center justify-between">
         <div className="flex-shrink-0">
           <Boxes className="2xl:w-20 2xl:h-20 xl:w-16 xl:h-16 lg:w-12 lg:h-12 sm:w-10 sm:h-10 sm:block hidden" color="#FFFFFF" />
         </div>
