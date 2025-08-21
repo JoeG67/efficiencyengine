@@ -56,33 +56,36 @@ export default function Assets() {
           <table className="w-full border-collapse">
             <thead>
               <tr className="bg-gray-100 text-left">
-                <th className="p-2 border-b">ID</th>
-                <th className="p-2 border-b">Title</th>
-                <th className="p-2 border-b">Category</th>
+                <th className="p-2 border">ID</th>
+                <th className="p-2 border">Title</th>
+                <th className="p-2 border">Category</th>
 
-                <th className="p-2 border-b">Description</th>
-                <th className="p-2 border-b">Quantity</th>
+                <th className="p-2 border">Description</th>
+                <th className="p-2 border">Quantity</th>
+                <th className="p-2 border">Price (RM)</th>
 
-                <th className="p-2 border-b">Status</th>
-                <th className="p-2 border-b text-center">Actions</th>
+                <th className="p-2 border">Status</th>
+                <th className="p-2 border text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
               {assets.map((a) => (
                 <tr key={a.id} className="hover:bg-gray-50">
-                  <td className="p-2 border-b font-semibold">{a.id}</td>
-                  <td className="p-2 border-b font-semibold">{a.title}</td>
-                  <td className="p-2 border-b text-sm text-gray-700">
+                  <td className="p-2 border font-semibold">{a.id}</td>
+                  <td className="p-2 border font-semibold">{a.title}</td>
+                  <td className="p-2 border text-sm text-gray-700">
                     {a.category}
                   </td>
-                  <td className="p-2 border-b text-sm text-gray-700">
+                  <td className="p-2 border text-sm text-gray-700">
                     {a.description}
                   </td>
-                  <td className="p-2 border-b text-sm text-gray-700">
+                  <td className="p-2 border text-sm text-gray-700">
                     {a.quantity}
                   </td>
-
-                  <td className="p-2 border-b">
+                  <td className="p-2 border text-sm text-gray-700">
+                    {a.price}
+                  </td>
+                  <td className="p-2 border">
                     <span
                       className={`px-2 py-1 rounded text-xs font-medium
                         ${
@@ -96,7 +99,7 @@ export default function Assets() {
                       {a.status}
                     </span>
                   </td>
-                  <td className="p-2 border-b text-center">
+                  <td className="p-2 border text-center">
                     <div className="flex justify-center gap-2">
                       <button
                         onClick={() => setEditingAsset(a)}
