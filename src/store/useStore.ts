@@ -7,6 +7,7 @@ import { persist } from "zustand/middleware";
 
 export type TaskStatus = "To Do" | "In-Progress" | "Done";
 export type AssetStatus = "Available" | "In Use" | "Review";
+export type userRole = "Admin" | "Manager" | "Employee" | "Viewer"; 
 export type Task = {
   id: string;
   title: string;
@@ -22,8 +23,14 @@ export type Asset = {
   category: string;
   description: string;
   quantity: number;
+  price: number;
   status: AssetStatus;
   createdAt: string;
+};
+export type User = {
+  id: string;
+  name: string;
+  role: userRole;
 };
 
 // 2. Shape of store
