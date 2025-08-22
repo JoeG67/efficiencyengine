@@ -1,4 +1,4 @@
-"use client";     
+"use client";
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -7,12 +7,13 @@ import { persist } from "zustand/middleware";
 
 export type TaskStatus = "To Do" | "In-Progress" | "Done";
 export type AssetStatus = "Available" | "In Use" | "Review";
-export type userRole = "Admin" | "Manager" | "Employee" | "Viewer"; 
+export type userRole = "Admin" | "Manager" | "Employee" | "Viewer";
 export type Task = {
   id: string;
   title: string;
   description: string;
   status: TaskStatus;
+  assignee: User | null;
   assetId?: string;
   createdAt: string;
 };
@@ -31,22 +32,31 @@ export type User = {
   id: string;
   name: string;
   role: userRole;
+  assignedTasks?: string[];
 };
+
+export type Price = {
+  price: number;
+}
 
 // 2. Shape of store
 
 type StoreState = {
   tasks: Task[];
   assets: Asset[];
+  users: User[];
 
   addTask: (task: Task) => void;
   updateTask: (id: string, updated: Partial<Task>) => void;
-
   deleteTask: (id: string) => void;
 
   addAsset: (task: Asset) => void;
   updateAsset: (id: string, updated: Partial<Asset>) => void;
   deleteAsset: (id: string) => void;
+
+  addUser: (task: User) => void;
+  updateUser: (id: string, updated: Partial<User>) => void;
+  deleteUser: (id: string) => void;
 };
 
 // 3. Store state
@@ -56,7 +66,7 @@ export const useStore = create<StoreState>()(
     (set) => ({
       tasks: [],
       assets: [],
-
+      users: [],
       // Task actions
       addTask: (task) =>
         set((state) => ({
@@ -92,9 +102,27 @@ export const useStore = create<StoreState>()(
         set((state) => ({
           assets: state.assets.filter((a) => a.id !== id),
         })),
+
+      addUser: (user) =>
+        set((state) => ({
+          users: [...state.users, user],
+        })),
+
+      updateUser: (id, updated) =>
+        set((state) => ({
+          users: state.users.map((u) =>
+            u.id === id ? { ...u, ...updated } : u
+          ),
+        })),
+
+      deleteUser: (id) =>
+        set((state) => ({
+          users: state.users.filter((u) => u.id !== id),
+        })),
     }),
+
     {
-      name: "efficiency-engine-store", 
+      name: "efficiency-engine-store",
     }
   )
 );
