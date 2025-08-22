@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Task, TaskStatus } from "@/store/useStore";
+import { Task, TaskStatus, User } from "@/store/useStore";
+import { useStore } from "@/store/useStore";
 
 type EditTaskFormProps = {
   task: Task;
@@ -10,9 +11,12 @@ type EditTaskFormProps = {
 };
 
 export default function EditTaskForm({ task, onSave, onCancel }: EditTaskFormProps) {
+  const users = useStore((state) => state.users);
+
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
   const [status, setStatus] = useState<TaskStatus>(task.status);
+  const [assignee, setAssignee] = useState<User | null>(task.assignee ?? null);
 
   const TASK_STATUSES: TaskStatus[] = ["To Do", "In-Progress", "Done"];
 
@@ -20,10 +24,11 @@ export default function EditTaskForm({ task, onSave, onCancel }: EditTaskFormPro
     e.preventDefault();
 
     const updatedTask: Task = {
-      ...task, 
+      ...task,
       title,
       description,
       status,
+      assignee,
     };
 
     onSave(updatedTask);
@@ -49,6 +54,22 @@ export default function EditTaskForm({ task, onSave, onCancel }: EditTaskFormPro
         onChange={(e) => setDescription(e.target.value)}
         className="w-full p-2 rounded border border-gray-200"
       />
+
+      <select
+        value={assignee?.id ?? ""}
+        onChange={(e) => {
+          const user = users.find((u) => u.id === e.target.value) || null;
+          setAssignee(user);
+        }}
+        className="w-full p-2 rounded border border-gray-200"
+      >
+        <option value="">Unassigned</option>
+        {users.map((u) => (
+          <option key={u.id} value={u.id}>
+            {u.name} ({u.role})
+          </option>
+        ))}
+      </select>
 
       <select
         value={status}

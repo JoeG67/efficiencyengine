@@ -9,13 +9,13 @@ import { Pencil, Trash, CirclePlus } from "lucide-react";
 export default function Tasks() {
   const tasks = useStore((state) => state.tasks);
   const addTask = useStore((state) => state.addTask);
-    const updateTask = useStore((state) => state.updateTask);
+  const updateTask = useStore((state) => state.updateTask);
 
   const deleteTask = useStore((state) => state.deleteTask);
   const [showForm, setShowForm] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
-return (
+  return (
     <div>
       <div className="p-6">
         <div className="flex justify-between pb-2">
@@ -23,7 +23,7 @@ return (
           <button
             className="border-green-500 border-2 rounded-sm bg-green-500 text-white px-3 py-1"
             onClick={() => {
-              setEditingTask(null); 
+              setEditingTask(null);
               setShowForm(true);
             }}
           >
@@ -61,6 +61,8 @@ return (
                 <th className="p-2 border">ID</th>
                 <th className="p-2 border">Title</th>
                 <th className="p-2 border">Description</th>
+                <th className="p-2 border">Assignee</th>
+
                 <th className="p-2 border">Status</th>
                 <th className="p-2 border text-center">Actions</th>
               </tr>
@@ -72,6 +74,9 @@ return (
                   <td className="p-2 border font-semibold">{t.title}</td>
                   <td className="p-2 border text-sm text-gray-700">
                     {t.description}
+                  </td>
+                  <td className="p-2 border text-sm text-gray-700">
+                    {t.assignee ? t.assignee.name : "Unassigned"}{" "}
                   </td>
                   <td className="p-2 border">
                     <span
