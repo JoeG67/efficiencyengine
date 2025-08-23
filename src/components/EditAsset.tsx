@@ -33,6 +33,7 @@ export default function EditAssetForm({
       category,
       description,
       quantity,
+      price,
       status,
     };
 
