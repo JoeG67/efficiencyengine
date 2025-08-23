@@ -52,19 +52,18 @@ export default function Assets() {
           />
         )}
 
-        <section className="bg-white p-4 rounded shadow-2xl">
+        <section className="bg-white p-4 rounded shadow-2xl mb-4">
           <table className="w-full border-collapse">
             <thead>
               <tr className="bg-gray-100 text-left">
-                <th className="p-2 border">ID</th>
-                <th className="p-2 border">Title</th>
-                <th className="p-2 border">Category</th>
+                <th className="p-2 border">Asset ID</th>
+                <th className="p-2 border">Asset Name</th>
+                <th className="p-2 border">Asset Category</th>
+                <th className="p-2 border">Asset Description</th>
+                <th className="p-2 border">Asset Quantity</th>
+                <th className="p-2 border">Price per Asset (RM)</th>
 
-                <th className="p-2 border">Description</th>
-                <th className="p-2 border">Quantity</th>
-                <th className="p-2 border">Price (RM)</th>
-
-                <th className="p-2 border">Status</th>
+                <th className="p-2 border">Asset Status</th>
                 <th className="p-2 border text-center">Actions</th>
               </tr>
             </thead>

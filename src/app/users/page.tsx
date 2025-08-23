@@ -58,10 +58,10 @@ export default function Assets() {
           <table className="w-full border-collapse">
             <thead>
               <tr className="bg-gray-100 text-left">
-                <th className="p-2 border">ID</th>
-                <th className="p-2 border">Name</th>
-                <th className="p-2 border">Role</th>
-                <th className="p-2 border">Tasks</th>
+                <th className="p-2 border">User ID</th>
+                <th className="p-2 border">User Name</th>
+                <th className="p-2 border">User Role</th>
+                <th className="p-2 border">Assigned Tasks</th>
                 <th className="p-2 border text-center">Actions</th>
               </tr>
             </thead>
