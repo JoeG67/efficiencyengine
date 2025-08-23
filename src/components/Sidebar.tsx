@@ -1,5 +1,5 @@
 "use client";
-import { FolderClosed, Check, LayoutDashboard, Users} from "lucide-react";
+import { FolderClosed, Check, LayoutDashboard, Users, Percent} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -44,6 +44,12 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
           className={currentPath === "/assets" ? "bg-red-600 p-2 rounded flex items-center gap-2" : "hover:bg-gray-400 p-2 rounded flex items-center gap-2"}
         >
           <FolderClosed size={20} /> {isOpen && "Asset Management"}
+        </Link>
+          <Link
+          href="/pricing"
+          className={currentPath === "/pricing" ? "bg-red-600 p-2 rounded flex items-center gap-2" : "hover:bg-gray-400 p-2 rounded flex items-center gap-2"}
+        >
+          <Percent size={20} /> {isOpen && "Pricing"}
         </Link>
                 <Link
           href="/users"
