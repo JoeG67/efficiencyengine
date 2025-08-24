@@ -40,19 +40,22 @@ export default function EditAssetForm({
     onSave(updatedAsset);
   };
 
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className="mb-4 p-4 bg-white space-y-2"
-    >
+return (
+  <form onSubmit={handleSubmit} className="mb-4 p-4 bg-white grid grid-cols-2 gap-4">
+    <div>
+      <label className="block text-sm font-medium">Asset Name</label>
       <input
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-2 rounded border border-gray-200 "
+        className="w-full p-2 rounded border border-gray-200"
         required
       />
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium">Asset Category</label>
       <input
         type="text"
         placeholder="Category"
@@ -61,12 +64,20 @@ export default function EditAssetForm({
         className="w-full p-2 rounded border border-gray-200"
         required
       />
+    </div>
+
+    <div className="col-span-2">
+      <label className="block text-sm font-medium">Asset Description</label>
       <textarea
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         className="w-full p-2 rounded border border-gray-200"
       />
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium">Asset Quantity</label>
       <input
         type="number"
         placeholder="Quantity"
@@ -77,6 +88,10 @@ export default function EditAssetForm({
         className="w-full p-2 rounded border border-gray-200"
         required
       />
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium">Price per Asset (RM)</label>
       <input
         type="number"
         placeholder="Price"
@@ -87,6 +102,10 @@ export default function EditAssetForm({
         className="w-full p-2 rounded border border-gray-200"
         required
       />
+    </div>
+
+    <div className="col-span-2">
+      <label className="block text-sm font-medium">Asset Status</label>
       <select
         value={status}
         onChange={(e) => setStatus(e.target.value as AssetStatus)}
@@ -94,30 +113,28 @@ export default function EditAssetForm({
       >
         {ASSET_STATUSES.map((s) => (
           <option key={s} value={s}>
-            {s === "Available"
-              ? "Available"
-              : s === "In Use"
-              ? "In Use"
-              : "Review"}
+            {s}
           </option>
         ))}
       </select>
+    </div>
 
-      <div className="flex gap-2">
-        <button
-          type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-800"
-        >
-          Update
-        </button>
-        <button
-          type="button"
-          onClick={onCancel}
-          className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-800"
-        >
-          Cancel
-        </button>
-      </div>
-    </form>
-  );
+    <div className="col-span-2 flex gap-2">
+      <button
+        type="submit"
+        className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-800"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        onClick={onCancel}
+        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-800"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+);
+
 }
