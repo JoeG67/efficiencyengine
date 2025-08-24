@@ -19,7 +19,7 @@ export default function Tasks() {
     <div>
       <div className="p-6">
         <div className="flex justify-between pb-2">
-          <h1 className="text-2xl font-bold">Tasks</h1>{" "}
+          <h1 className="text-2xl font-bold">Tasks</h1>
           <button
             className="border-green-500 border-2 rounded-sm bg-green-500 text-white px-3 py-1"
             onClick={() => {
@@ -59,8 +59,9 @@ export default function Tasks() {
                 <th className="p-2 border">Task ID</th>
                 <th className="p-2 border">Task Name</th>
                 <th className="p-2 border">Task Description</th>
+                <th className="p-2 border">Start Date</th>
+                <th className="p-2 border">End Date</th>
                 <th className="p-2 border">Assignee</th>
-
                 <th className="p-2 border">Task Status</th>
                 <th className="p-2 border text-center">Actions</th>
               </tr>
@@ -70,11 +71,11 @@ export default function Tasks() {
                 <tr key={t.id} className="hover:bg-gray-50">
                   <td className="p-2 border font-semibold">{t.id}</td>
                   <td className="p-2 border font-semibold">{t.title}</td>
+                  <td className="p-2 border text-sm text-gray-700">{t.description}</td>
+                  <td className="p-2 border text-sm text-gray-700">{t.startDate}</td>
+                  <td className="p-2 border text-sm text-gray-700">{t.endDate}</td>
                   <td className="p-2 border text-sm text-gray-700">
-                    {t.description}
-                  </td>
-                  <td className="p-2 border text-sm text-gray-700">
-                    {t.assignee ? t.assignee.name : "Unassigned"}{" "}
+                    {t.assignee ? t.assignee.name : "Unassigned"}
                   </td>
                   <td className="p-2 border">
                     <span
