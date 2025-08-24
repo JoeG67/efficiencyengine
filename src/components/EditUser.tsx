@@ -31,10 +31,9 @@ const updatedUser: User = {
   };
 
 return (
-    <form
-      onSubmit={handleSubmit}
-      className="mb-4 p-4 bg-white space-y-2"
-    >
+  <form onSubmit={handleSubmit} className="mb-4 p-4 bg-white grid grid-cols-2 gap-4">
+    <div>
+      <label className="block text-sm font-medium">User Name</label>
       <input
         type="text"
         placeholder="Name"
@@ -43,7 +42,10 @@ return (
         className="w-full p-2 rounded border border-gray-200"
         required
       />
+    </div>
 
+    <div>
+      <label className="block text-sm font-medium">User Role</label>
       <select
         value={role}
         onChange={(e) => setRole(e.target.value as userRole)}
@@ -55,22 +57,24 @@ return (
           </option>
         ))}
       </select>
+    </div>
 
-      <div className="flex gap-2">
-        <button
-          type="submit"
-          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-800"
-        >
-          Update
-        </button>
-        <button
-          type="button"
-          onClick={onCancel}
-          className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-800"
-        >
-          Cancel
-        </button>
-      </div>
-    </form>
-  );
+    <div className="col-span-2 flex gap-2">
+      <button
+        type="submit"
+        className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-800"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        onClick={onCancel}
+        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-800"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+);
+
 }

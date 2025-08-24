@@ -21,7 +21,7 @@ export default function Assets() {
     <div>
       <div className="p-6">
         <div className="flex justify-between pb-2">
-          <h1 className="text-2xl font-bold">Users</h1>{" "}
+          <h1 className="text-2xl font-bold">Users</h1>
           <button
             className="border-green-500 border-2 rounded-sm bg-green-500 text-white px-3 py-1"
             onClick={() => {
