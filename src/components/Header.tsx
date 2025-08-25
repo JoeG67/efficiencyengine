@@ -1,5 +1,5 @@
 "use client";
-import { Menu, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown, Search } from "lucide-react";
 import { useStore } from "@/store/useStore";
 import { useState, useMemo } from "react";
 import Link from "next/link";
@@ -36,15 +36,20 @@ export default function Header({ onToggle }: { onToggle: () => void }) {
       <button className="p-2" onClick={onToggle}>
         <Menu className="text-black hover:text-[#B8B6B6]" size={24} />
       </button>
-
       <div className="relative">
-        <input
-          type="text"
-          placeholder="Search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="border rounded-lg px-3 py-1 w-64"
-        />
+        <div className="flex">
+          <input
+            type="text"
+            placeholder="Search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="border border-gray-300 rounded-l-lg px-3 py-2 w-64 focus:outline-none focus:ring-1 focus:ring-gray-400"
+          />
+          <button className="bg-gray-200 border border-l-0 border-gray-300 rounded-r-lg px-3 flex items-center justify-center hover:bg-gray-300">
+            <Search className="text-black" size={20} />
+          </button>
+        </div>
+
         {query && results.length > 0 && (
           <ul className="absolute top-full left-0 mt-1 w-64 bg-white border rounded shadow-lg z-50">
             {results.map((r, i) => (
