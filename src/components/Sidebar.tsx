@@ -1,11 +1,16 @@
 "use client";
-import { FolderClosed, Check, LayoutDashboard, Users, Percent} from "lucide-react";
+import {
+  FolderClosed,
+  Check,
+  LayoutDashboard,
+  Users,
+  Percent,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Sidebar({ isOpen }: { isOpen: boolean }) {
-
-        const currentPath = usePathname();
+  const currentPath = usePathname();
   return (
     <aside
       className={`bg-[#313a46] border-r min-h-screen transition-all duration-300 ease-in-out flex flex-col ${
@@ -14,48 +19,74 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
     >
       <div className="flex items-center justify-center p-6">
         {isOpen && (
-          <h2 className="2xl:text-xl xl:text-lg lg:text-base sm:text-sm font-bold text-white font-sans">
+          <Link
+            className="2xl:text-xl xl:text-lg lg:text-base sm:text-sm font-bold text-white font-sans"
+            href="/"
+          >
             EFFICIENCY ENGINE
-          </h2>
+          </Link>
         )}
 
         {!isOpen && (
-          <h2 className="2xl:text-xl xl:text-lg lg:text-base sm:text-sm text-white font-bold">
+          <Link
+            className="2xl:text-xl xl:text-lg lg:text-base sm:text-sm text-white font-bold"
+            href="/"
+          >
             EE
-          </h2>
+          </Link>
         )}
       </div>
 
       <nav className="flex flex-col gap-2 p-4 text-white font-sans 2xl:text-lg xl:text-base lg:text-sm sm:text-xs">
         <Link
           href="/"
-          className={currentPath === "/" ? "bg-red-600 p-2 rounded flex items-center gap-2" : "hover:bg-gray-400 p-2 rounded flex items-center gap-2"}
+          className={
+            currentPath === "/"
+              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+          }
         >
           <LayoutDashboard size={20} /> {isOpen && "Dashboard"}
         </Link>
         <Link
           href="/tasks"
-          className={currentPath === "/tasks" ? "bg-red-600 p-2 rounded flex items-center gap-2" : "hover:bg-gray-400 p-2 rounded flex items-center gap-2"}
+          className={
+            currentPath === "/tasks"
+              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+          }
         >
           <Check size={20} /> {isOpen && "Tasks"}
         </Link>
         <Link
           href="/assets"
-          className={currentPath === "/assets" ? "bg-red-600 p-2 rounded flex items-center gap-2" : "hover:bg-gray-400 p-2 rounded flex items-center gap-2"}
+          className={
+            currentPath === "/assets"
+              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+          }
         >
           <FolderClosed size={20} /> {isOpen && "Asset Management"}
         </Link>
-          <Link
-          href="/pricing"
-          className={currentPath === "/pricing" ? "bg-red-600 p-2 rounded flex items-center gap-2" : "hover:bg-gray-400 p-2 rounded flex items-center gap-2"}
-        >
-          <Percent size={20} /> {isOpen && "Pricing"}
-        </Link>
-                <Link
+        <Link
           href="/users"
-          className={currentPath === "/users" ? "bg-red-600 p-2 rounded flex items-center gap-2" : "hover:bg-gray-400 p-2 rounded flex items-center gap-2"}
+          className={
+            currentPath === "/users"
+              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+          }
         >
           <Users size={20} /> {isOpen && "User Management"}
+        </Link>
+        <Link
+          href="/pricing"
+          className={
+            currentPath === "/pricing"
+              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+          }
+        >
+          <Percent size={20} /> {isOpen && "Pricing"}
         </Link>
       </nav>
     </aside>
