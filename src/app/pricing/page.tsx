@@ -14,7 +14,7 @@ export default function PricingPage() {
         </div>
 
         <section className="bg-white p-4 rounded shadow-2xl mb-4">
-          <div className="p-4">
+          <div>
             <table className="w-full border-collapse">
               <thead>
                 <tr className="bg-gray-100 text-left">
