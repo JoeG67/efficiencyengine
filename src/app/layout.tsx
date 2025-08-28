@@ -1,6 +1,6 @@
 "use client";
 
-// import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
@@ -17,10 +17,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: '...',
-//   description: '...',
-// }
+export const metadata: Metadata = {
+  title: 'Efficiency Engine',
+  description: 'Efficiency Engine',
+}
 
 export default function RootLayout({
   children,
