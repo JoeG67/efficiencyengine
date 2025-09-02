@@ -22,7 +22,7 @@ export default function HomePage() {
 
   return (
     <main className="flex-1 p-4 grid grid-cols-2 md:grid-cols-3 sm:grid-cols-4 gap-4">
-      <section className="bg-[#00A15D] p-4 rounded-lg shadow-xl flex items-center justify-between">
+      <section className="bg-blue-600 p-4 rounded-lg shadow-xl flex items-center justify-between">
         <div className="flex-shrink-0">
           <ListTodo
             className="2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 lg:w-10 lg:h-10 sm:w-8 sm:h-8 sm:block hidden"
@@ -84,7 +84,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-blue-600 p-4 rounded-lg shadow-xl flex items-center justify-between">
+      <section className="bg-[#00A15D] p-4 rounded-lg shadow-xl flex items-center justify-between">
         <div className="flex-shrink-0">
           <DollarSign
             className="2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 lg:w-10 lg:h-10 sm:w-8 sm:h-8 sm:block hidden"
@@ -168,7 +168,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-indigo-600 p-4 rounded-lg shadow-xl flex items-center justify-between">
+      <section className="bg-orange-600 p-4 rounded-lg shadow-xl flex items-center justify-between">
         <div className="flex-shrink-0">
           <Logs
             className="2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 lg:w-10 lg:h-10 sm:w-8 sm:h-8 sm:block hidden"
@@ -203,7 +203,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-teal-500 p-4 rounded-lg shadow-xl flex items-center justify-between">
+      <section className="bg-[#009688] p-4 rounded-lg shadow-xl flex items-center justify-between">
         <div className="flex-shrink-0">
           <Calendar
             className="2xl:w-14 2xl:h-14 xl:w-12 xl:h-12 lg:w-10 lg:h-10 sm:w-8 sm:h-8 sm:block hidden"
