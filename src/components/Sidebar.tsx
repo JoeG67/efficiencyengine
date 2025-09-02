@@ -13,7 +13,7 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
   const currentPath = usePathname();
   return (
     <aside
-      className={`bg-[#313a46] border-r min-h-screen transition-all duration-300 ease-in-out flex flex-col ${
+      className={`bg-[#15283c] border-r min-h-screen transition-all duration-300 ease-in-out flex flex-col ${
         isOpen ? "w-64" : "w-16"
       }`}
     >
