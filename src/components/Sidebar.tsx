@@ -1,10 +1,10 @@
 "use client";
 import {
   FolderClosed,
-  Check,
+  ListChecks,
   LayoutDashboard,
   Users,
-  Percent,
+  Gem,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -42,51 +42,51 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
           href="/"
           className={
             currentPath === "/"
-              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
-              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+              ? "bg-zinc-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-zinc-600 p-2 rounded flex items-center gap-2"
           }
         >
-          <LayoutDashboard size={20} /> {isOpen && "Dashboard"}
+          <LayoutDashboard size={20} color="#ff9800" /> {isOpen && "Dashboard"}
         </Link>
         <Link
           href="/tasks"
           className={
             currentPath === "/tasks"
-              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
-              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+              ? "bg-zinc-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-zinc-600 p-2 rounded flex items-center gap-2"
           }
         >
-          <Check size={20} /> {isOpen && "Tasks"}
+          <ListChecks size={20} color="#ff5722"/> {isOpen && "Tasks"}
         </Link>
         <Link
           href="/assets"
           className={
             currentPath === "/assets"
-              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
-              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+              ? "bg-zinc-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-zinc-600 p-2 rounded flex items-center gap-2"
           }
         >
-          <FolderClosed size={20} /> {isOpen && "Asset Management"}
+          <FolderClosed size={20} color="#673ab7" /> {isOpen && "Asset Management"}
         </Link>
         <Link
           href="/users"
           className={
             currentPath === "/users"
-              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
-              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+              ? "bg-zinc-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-zinc-600 p-2 rounded flex items-center gap-2"
           }
         >
-          <Users size={20} /> {isOpen && "User Management"}
+          <Users size={20} color="#2196f3" /> {isOpen && "User Management"}
         </Link>
         <Link
           href="/pricing"
           className={
             currentPath === "/pricing"
-              ? "bg-slate-400 p-2 rounded flex items-center gap-2"
-              : "hover:bg-slate-600 p-2 rounded flex items-center gap-2"
+              ? "bg-zinc-400 p-2 rounded flex items-center gap-2"
+              : "hover:bg-zinc-600 p-2 rounded flex items-center gap-2"
           }
         >
-          <Percent size={20} /> {isOpen && "Pricing"}
+          <Gem size={20} color="#2196f3" /> {isOpen && "Pricing"}
         </Link>
       </nav>
     </aside>
