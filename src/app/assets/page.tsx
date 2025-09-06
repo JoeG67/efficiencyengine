@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Asset } from "@/store/useStore";
 import AssetForm from "@/components/AddAsset";
 import EditAssetForm from "@/components/EditAsset";
-import { Pencil, Trash, CirclePlus } from "lucide-react";
+import { Pencil, Trash, CirclePlus, ChevronDown} from "lucide-react";
 
 export default function Assets() {
   const assets = useStore((state) => state.assets);
@@ -14,13 +14,35 @@ export default function Assets() {
   const deleteAsset = useStore((state) => state.deleteAsset);
   const [showForm, setShowForm] = useState(false);
   const [editingAsset, setEditingAsset] = useState<Asset | null>(null);
+  const [open, setOpen] = useState(false);
 
   return (
     <div>
       <div className="p-6">
         <div className="flex justify-between pb-2">
-          <h1 className="text-2xl font-bold">Assets</h1>
-          <button
+<div className="flex items-center gap-2 relative">
+  <h1 className="text-2xl font-bold">Assets</h1>
+  <button
+    onClick={() => setOpen(!open)}
+    className="flex items-center px-2 py-1 rounded hover:bg-gray-100"
+  >
+    <ChevronDown size={18} />
+  </button>
+
+  {open && (
+    <div className="absolute left-0 top-full mt-2 w-64 bg-white shadow-lg rounded-lg p-3 text-sm z-50">
+      <p>
+        <span className="text-green-600 font-semibold">Green</span>: Add
+      </p>
+      <p>
+        <span className="text-blue-600 font-semibold">Blue</span>: Edit
+      </p>
+      <p>
+        <span className="text-red-600 font-semibold">Red</span>: Delete
+      </p>
+    </div>
+  )}
+</div>          <button
             className="border-green-500 border-2 rounded-sm bg-green-500 text-white px-3 py-1"
             onClick={() => {
               setEditingAsset(null);
