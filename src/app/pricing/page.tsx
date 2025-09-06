@@ -1,16 +1,35 @@
 "use client";
 import { useStore } from "@/store/useStore";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 export default function PricingPage() {
   const assets = useStore((state) => state.assets);
-
+  const [open, setOpen] = useState(false);
   const totalValue = assets.reduce((sum, a) => sum + a.price * a.quantity, 0);
 
   return (
     <div>
       <div className="p-6">
         <div className="flex justify-between pb-2">
-          <h1 className="text-2xl font-bold">Pricing Overview</h1>
+          <div className="flex items-center gap-2 relative">
+            <h1 className="text-2xl font-bold">Pricing Overview</h1>
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex items-center px-2 py-1 rounded hover:bg-gray-100"
+            >
+              <ChevronDown size={18} />
+            </button>
+
+            {open && (
+              <div className="absolute left-0 top-full mt-2 w-64 bg-white shadow-lg rounded-lg p-3 text-sm z-50">
+                <p>
+                  <span className="text-black font-semibold">Total Value = Asset Quantity * Price Per Asset</span>:
+                </p>
+               
+              </div>
+            )}
+          </div>{" "}
         </div>
 
         <section className="bg-white p-4 rounded shadow-2xl mb-4">
