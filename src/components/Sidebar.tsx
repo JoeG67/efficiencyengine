@@ -56,7 +56,7 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
               : "hover:bg-zinc-600 p-2 rounded flex items-center gap-2"
           }
         >
-          <ListChecks size={20} color="#ff5722"/> {isOpen && "Tasks"}
+          <ListChecks size={20} color="#2563EB"/> {isOpen && "Tasks"}
         </Link>
         <Link
           href="/assets"
@@ -66,7 +66,7 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
               : "hover:bg-zinc-600 p-2 rounded flex items-center gap-2"
           }
         >
-          <FolderClosed size={20} color="#673ab7" /> {isOpen && "Asset Management"}
+          <FolderClosed size={20} color="#DC2626" /> {isOpen && "Asset Management"}
         </Link>
         <Link
           href="/users"
@@ -76,7 +76,7 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
               : "hover:bg-zinc-600 p-2 rounded flex items-center gap-2"
           }
         >
-          <Users size={20} color="#2196f3" /> {isOpen && "User Management"}
+          <Users size={20} color="#9333EA" /> {isOpen && "User Management"}
         </Link>
         <Link
           href="/pricing"
@@ -86,7 +86,7 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
               : "hover:bg-zinc-600 p-2 rounded flex items-center gap-2"
           }
         >
-          <Gem size={20} color="#2196f3" /> {isOpen && "Pricing"}
+          <Gem size={20} color="#00A15D" /> {isOpen && "Pricing"}
         </Link>
       </nav>
     </aside>
