@@ -6,13 +6,14 @@ import AddUser from "@/components/AddUser";
 import EditUser from "@/components/EditUser";
 import { Pencil, Trash, CirclePlus, ChevronDown } from "lucide-react";
 
-export default function Assets() {
+export default function UsersPage() {
   const users = useStore((state) => state.users);
   const tasks = useStore((state) => state.tasks);
 
   const addUser = useStore((state) => state.addUser);
   const updateUser = useStore((state) => state.updateUser);
   const deleteUser = useStore((state) => state.deleteUser);
+
   const [showForm, setShowForm] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
   const [open, setOpen] = useState(false);
@@ -20,16 +21,15 @@ export default function Assets() {
   return (
     <div>
       <div className="p-6">
-        <div className="flex justify-between pb-2">
+        <div className="flex justify-between pb-4 items-center">
           <div className="flex items-center gap-2 relative">
             <h1 className="text-2xl font-bold">Users</h1>
             <button
               onClick={() => setOpen(!open)}
-              className="flex items-center px-2 py-1 rounded hover:bg-gray-100"
+              className="flex items-center px-2 py-1 rounded hover:bg-gray-100 transition"
             >
               <ChevronDown size={18} />
             </button>
-
             {open && (
               <div className="absolute left-0 top-full mt-2 w-64 bg-white shadow-lg rounded-lg p-3 text-sm z-50">
                 <p>
@@ -46,7 +46,7 @@ export default function Assets() {
                 </p>
               </div>
             )}
-          </div>{" "}
+          </div>
           <button
             className="border-green-500 border-2 rounded-sm bg-green-500 text-white px-3 py-1"
             onClick={() => {
@@ -57,7 +57,6 @@ export default function Assets() {
             <CirclePlus size={16} />
           </button>
         </div>
-
         {showForm && !editingUser && (
           <AddUser
             onSave={(user) => {
@@ -67,7 +66,6 @@ export default function Assets() {
             onCancel={() => setShowForm(false)}
           />
         )}
-
         {editingUser && (
           <EditUser
             user={editingUser}
@@ -78,34 +76,36 @@ export default function Assets() {
             onCancel={() => setEditingUser(null)}
           />
         )}
-
-        <section className="bg-white p-4 rounded shadow-2xl">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-100 text-left">
-                <th className="p-2 border">User ID</th>
-                <th className="p-2 border">User Name</th>
-                <th className="p-2 border">User Role</th>
-                <th className="p-2 border">Assigned Tasks</th>
-                <th className="p-2 border text-center">Actions</th>
+        <section className="bg-white p-4 rounded-lg shadow-md overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead className="bg-gray-100 text-left text-gray-600 uppercase text-xs tracking-wider">
+              <tr>
+                <th className="px-4 py-2 border">ID</th>
+                <th className="px-4 py-2 border">Name</th>
+                <th className="px-4 py-2 border">Role</th>
+                <th className="px-4 py-2 border">Assigned Tasks</th>
+                <th className="px-4 py-2 border text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {users.map((u) => {
+              {users.map((u, i) => {
                 const assignedCount = tasks.filter(
                   (t) => t.assignee?.id === u.id
                 ).length;
                 return (
-                  <tr key={u.id} className="hover:bg-gray-50">
-                    <td className="p-2 border font-semibold">{u.id}</td>
-                    <td className="p-2 border font-semibold">{u.name}</td>
-                    <td className="p-2 border text-sm text-gray-700">
-                      {u.role}
-                    </td>
-                    <td className="p-2 border text-sm text-gray-700">
+                  <tr
+                    key={u.id}
+                    className={`${
+                      i % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    } hover:bg-gray-100 transition-colors`}
+                  >
+                    <td className="px-4 py-3 border font-semibold">{u.id}</td>
+                    <td className="px-4 py-3 border font-semibold">{u.name}</td>
+                    <td className="px-4 py-3 border text-gray-700">{u.role}</td>
+                    <td className="px-4 py-3 border text-gray-700">
                       {assignedCount}
                     </td>
-                    <td className="p-2 border text-center">
+                    <td className="px-4 py-3 border text-center">
                       <div className="flex justify-center gap-2">
                         <button
                           onClick={() => setEditingUser(u)}
