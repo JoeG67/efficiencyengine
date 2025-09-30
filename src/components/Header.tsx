@@ -32,10 +32,14 @@ export default function Header({ onToggle }: { onToggle: () => void }) {
   }, [query, tasks, assets, users]);
 
   return (
-    <header className="bg-white text-black p-4 flex items-center justify-between transition-all duration-300 relative">
+    <header className="bg-white shadow-sm text-black p-4 flex items-center justify-between transition-all duration-300 relative">
       <button className="p-2" onClick={onToggle}>
-        <Menu className="text-black hover:text-[#B8B6B6]" size={24} />
+        <Menu
+          className="text-black hover:text-gray-500 transition-colors duration-200"
+          size={24}
+        />
       </button>
+
       <div className="relative">
         <div className="flex">
           <input
@@ -43,51 +47,33 @@ export default function Header({ onToggle }: { onToggle: () => void }) {
             placeholder="Search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="border border-gray-300 rounded-l-lg px-3 py-2 w-64 focus:outline-none focus:ring-1 focus:ring-gray-400"
+            className="border border-gray-300 rounded-l-lg px-2 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-gray-400 transition"
           />
-          <button className="bg-gray-200 border border-l-0 border-gray-300 rounded-r-lg px-3 flex items-center justify-center hover:bg-gray-300">
+          <button className="bg-gray-200 border border-l-0 border-gray-300 rounded-r-lg px-3 flex items-center justify-center hover:bg-gray-300 transition">
             <Search className="text-black" size={20} />
           </button>
         </div>
-
-        {query && results.length > 0 && (
-          <ul className="absolute top-full left-0 mt-1 w-64 bg-white border rounded shadow-lg z-50">
-            {results.map((r, i) => (
-              <li
-                key={i}
-                className="px-3 py-1 hover:bg-gray-100 cursor-pointer text-sm"
-              >
-                <Link
-                  href={r.href}
-                  className="block px-3 py-1 hover:bg-gray-100 cursor-pointer text-sm"
-                >
-                  <span className="font-semibold">{r.type}:</span> {r.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
+
       <div className="relative">
         <button
           onClick={() => setOpen(!open)}
-          className="flex items-center gap-1 px-3 py-1 rounded hover:bg-gray-100"
+          className="flex items-center gap-1 px-3 py-1 rounded hover:bg-gray-100 transition"
         >
           <span className="font-semibold">Summary</span>
           <ChevronDown size={16} />
         </button>
-
         {open && (
-          <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg p-3 text-sm">
-            <div className="flex justify-between">
+          <div className="absolute right-0 mt-2 w-56 bg-white shadow-lg rounded-lg p-3 text-sm border border-gray-100">
+            <div className="flex justify-between py-1 hover:bg-gray-50 rounded px-1">
               <span>Tasks:</span>
               <span className="font-bold">{tasks.length}</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between py-1 hover:bg-gray-50 rounded px-1">
               <span>Assets:</span>
               <span className="font-bold">{assets.length}</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between py-1 hover:bg-gray-50 rounded px-1">
               <span>Users:</span>
               <span className="font-bold">{users.length}</span>
             </div>
