@@ -11,14 +11,24 @@ export default function Tasks() {
   const addTask = useStore((state) => state.addTask);
   const updateTask = useStore((state) => state.updateTask);
   const deleteTask = useStore((state) => state.deleteTask);
+
   const [showForm, setShowForm] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [open, setOpen] = useState(false);
 
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }).format(date);
+  };
+
   return (
     <div>
       <div className="p-6">
-        <div className="flex justify-between pb-2">
+        <div className="flex justify-between pb-4 items-center">
           <div className="flex items-center gap-2 relative">
             <h1 className="text-2xl font-bold">Tasks</h1>
             <button
@@ -45,18 +55,17 @@ export default function Tasks() {
               </div>
             )}
           </div>
-
           <button
-            className="border-green-500 border-2 rounded-sm bg-green-500 text-white px-3 py-1"
+            className="flex items-center gap-1 border-2 border-green-500 bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
             onClick={() => {
               setEditingTask(null);
               setShowForm(true);
             }}
           >
-            <CirclePlus size={16} />
+            <CirclePlus size={18} />{" "}
+            <span className="hidden sm:inline">Add</span>
           </button>
         </div>
-
         {showForm && !editingTask && (
           <TaskForm
             onSave={(task) => {
@@ -66,7 +75,6 @@ export default function Tasks() {
             onCancel={() => setShowForm(false)}
           />
         )}
-
         {editingTask && (
           <EditTaskForm
             task={editingTask}
@@ -77,41 +85,45 @@ export default function Tasks() {
             onCancel={() => setEditingTask(null)}
           />
         )}
-
-        <section className="bg-white p-4 rounded shadow-2xl">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-100 text-left">
-                <th className="p-2 border">Task ID</th>
-                <th className="p-2 border">Task Name</th>
-                <th className="p-2 border">Task Description</th>
-                <th className="p-2 border">Start Date</th>
-                <th className="p-2 border">End Date</th>
-                <th className="p-2 border">Assignee</th>
-                <th className="p-2 border">Task Status</th>
-                <th className="p-2 border text-center">Actions</th>
+        <section className="bg-white p-4 rounded-lg shadow-md mb-6 overflow-x-auto">
+          <table className="w-full border-collapse rounded-lg overflow-hidden">
+            <thead className="bg-gray-100 text-xs uppercase tracking-wider text-gray-600">
+              <tr>
+                <th className="px-4 py-2 border">ID</th>
+                <th className="px-4 py-2 border">Name</th>
+                <th className="px-4 py-2 border">Description</th>
+                <th className="px-4 py-2 border">Start</th>
+                <th className="px-4 py-2 border">End</th>
+                <th className="px-4 py-2 border">Assignee</th>
+                <th className="px-4 py-2 border">Status</th>
+                <th className="px-4 py-2 border text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {tasks.map((t) => (
-                <tr key={t.id} className="hover:bg-gray-50">
-                  <td className="p-2 border font-semibold">{t.id}</td>
-                  <td className="p-2 border font-semibold">{t.title}</td>
-                  <td className="p-2 border text-sm text-gray-700">
+              {tasks.map((t, i) => (
+                <tr
+                  key={t.id}
+                  className={`${
+                    i % 2 === 0 ? "bg-white" : "bg-gray-50"
+                  } hover:bg-gray-100 transition-colors`}
+                >
+                  <td className="px-4 py-3 border font-semibold">{t.id}</td>
+                  <td className="px-4 py-3 border font-semibold">{t.title}</td>
+                  <td className="px-4 py-3 border text-sm text-gray-700">
                     {t.description}
                   </td>
-                  <td className="p-2 border text-sm text-gray-700">
-                    {t.startDate}
+                  <td className="px-4 py-3 border text-sm text-gray-700">
+                    {formatDate(t.startDate)}
                   </td>
-                  <td className="p-2 border text-sm text-gray-700">
-                    {t.endDate}
+                  <td className="px-4 py-3 border text-sm text-gray-700">
+                    {formatDate(t.endDate)}
                   </td>
-                  <td className="p-2 border text-sm text-gray-700">
+                  <td className="px-4 py-3 border text-sm text-gray-700">
                     {t.assignee ? t.assignee.name : "Unassigned"}
                   </td>
-                  <td className="p-2 border">
+                  <td className="px-4 py-3 border">
                     <span
-                      className={`px-2 py-1 rounded text-xs font-medium
+                      className={`px-3 py-1 rounded-full text-xs font-semibold
                         ${
                           t.status === "Done"
                             ? "bg-green-100 text-green-700"
@@ -123,17 +135,19 @@ export default function Tasks() {
                       {t.status}
                     </span>
                   </td>
-                  <td className="p-2 border text-center">
+                  <td className="px-4 py-3 border text-center">
                     <div className="flex justify-center gap-2">
                       <button
                         onClick={() => setEditingTask(t)}
-                        className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+                        className="p-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                        title="Edit Task"
                       >
                         <Pencil size={16} />
                       </button>
                       <button
                         onClick={() => deleteTask(t.id)}
-                        className="px-3 py-1 text-sm bg-red-600 text-white rounded hover:bg-red-700"
+                        className="p-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                        title="Delete Task"
                       >
                         <Trash size={16} />
                       </button>
